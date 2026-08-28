@@ -1,0 +1,31 @@
+{
+  "name": "hostproto-dap-core",
+  "version": "0.1.0",
+  "description": "The HostProto semantics for Debug Adapter Protocol hosts: one host, one MCP surface, any DAP engine behind an EngineBinding",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" } },
+  "files": ["dist", "schemas", "hostproto-semantics.lock.json", "scripts", "docs"],
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "schemas": "node scripts/fetch-schemas.mjs",
+    "build": "tsc -p tsconfig.json",
+    "prepare": "node scripts/fetch-schemas.mjs && tsc -p tsconfig.json",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/core": "2.0.0",
+    "@modelcontextprotocol/server": "2.0.0",
+    "ajv": "8.20.0",
+    "ajv-formats": "3.0.1"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.0.0",
+    "@types/node": "24.10.0",
+    "tsx": "4.23.12",
+    "typescript": "5.9.3",
+    "vitest": "4.1.11"
+  }
+}
